@@ -20,7 +20,7 @@ buttons = buttons()
 
 
 async def send_notification_sale():
-    users = await controllers.get_active_users(1)
+    users = await controllers.get_active_users(60)
 
     keyboard = [
         [buttons().Stars],
@@ -35,6 +35,21 @@ async def send_notification_sale():
                 photo=pictures.NOTIFICATION_SALE,
                 text=texts().NOTIFICATION_SALE,
                 reply_markup=InlineKeyboardMarkup(inline_keyboard=keyboard)
+            )
+        except:
+            continue
+
+    logger.logger.info(users)
+
+
+async def send_notification_group():
+    users = await controllers.get_active_users(30)
+
+    for user in users:
+        try:
+            await controllers.send_message(
+                chat_id=user.telegram_id,
+                text=texts().POST_PROMO,
             )
         except:
             continue

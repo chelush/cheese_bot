@@ -134,8 +134,8 @@ async def update_user_updated_at(user_id: int, new_time: datetime.datetime, sess
         await session.commit()
 
 
-async def get_active_users(hours: int, session: AsyncSession = None) -> list[User]:
-    threshold_time = datetime.datetime.now() - datetime.timedelta(hours=hours)
+async def get_active_users(minutes: int, session: AsyncSession = None) -> list[User]:
+    threshold_time = datetime.datetime.now() - datetime.timedelta(minutes=minutes)
     async with session or async_session_maker() as session:
         stmt = select(User).where(User.updated_at >= threshold_time)
         result = await session.execute(stmt)
