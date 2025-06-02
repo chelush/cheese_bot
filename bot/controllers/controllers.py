@@ -114,7 +114,6 @@ async def fetch_user(user_telegram: aiogram.types.User, session: AsyncSession = 
         query = select(User).where(User.telegram_id == user_telegram.id)
         result = await session.execute(query)
         user = result.scalar_one_or_none()
-        logger.info(f"Updated user {user.telegram_id=} at {user.updated_at}")
         if user is None:
             user = await create_user(user_telegram, session=session)
         user.updated_at = datetime.datetime.now()
