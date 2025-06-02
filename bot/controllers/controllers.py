@@ -26,7 +26,6 @@ from config import (
     REDIS_DB,
     REDIS_PASSWORD,
 )
-from pymongo import ASCENDING, DESCENDING
 from aiogram.types.base import UNSET_DISABLE_WEB_PAGE_PREVIEW, UNSET_PARSE_MODE
 from telethon.tl.functions.messages import CreateChatRequest, ExportChatInviteRequest, AddChatUserRequest, \
     EditChatAdminRequest, MigrateChatRequest
