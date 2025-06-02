@@ -1,14 +1,15 @@
+from bson.json_util import default
 from envparse import env
 
 env.read_envfile()
 
 TELEGRAM_BOT_TOKEN: str = env.str('TELEGRAM_BOT_TOKEN')
 
-POSTGRES_USER: str = env.str('POSTGRES_USER')
-POSTGRES_PASSWORD: str = env.str('POSTGRES_PASSWORD')
-POSTGRES_HOST: str = env.str('POSTGRES_HOST')
-POSTGRES_PORT: int = env.int('POSTGRES_PORT')
-POSTGRES_DB: str = env.str('POSTGRES_DB')
+POSTGRES_USER: str = env.str('POSTGRES_USER', default='user')
+POSTGRES_PASSWORD: str = env.str('POSTGRES_PASSWORD', default='password')
+POSTGRES_HOST: str = env.str('POSTGRES_HOST', default='postgres')
+POSTGRES_PORT: int = env.int('POSTGRES_PORT', default='5432')
+POSTGRES_DB: str = env.str('POSTGRES_DB', default='cheeseai')
 
 DATABASE_URL = (
     f"postgresql+asyncpg://{POSTGRES_USER}:{POSTGRES_PASSWORD}"
