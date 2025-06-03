@@ -36,8 +36,8 @@ async def send_notification_sale():
                 text=texts().NOTIFICATION_SALE,
                 reply_markup=InlineKeyboardMarkup(inline_keyboard=keyboard)
             )
-        except:
-            continue
+        except Exception as e:
+            logger.logger.error(f'Cant send message to {user.telegram_id}: {e}')
 
     logger.logger.info(users)
 
@@ -51,7 +51,7 @@ async def send_notification_group():
                 chat_id=user.telegram_id,
                 text=texts().POST_PROMO,
             )
-        except:
-            continue
+        except Exception as e:
+            logger.logger.error(f'Cant send message to {user.telegram_id}: {e}')
 
     logger.logger.info(users)
