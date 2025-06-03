@@ -10,6 +10,7 @@ class pictures:
     PRICE = "https://ibb.co/tp64Mp0x"
     CATALOG = "https://ibb.co/B5gKg1s7"
     NOTIFICATION_SALE = "https://ibb.co/gMdydPcd"
+    PROMO = "https://ibb.co/JWMgHYmv"
 
 
 class links:

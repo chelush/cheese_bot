@@ -49,6 +49,7 @@ async def send_notification_group():
         try:
             await controllers.send_message(
                 chat_id=user.telegram_id,
+                photo=pictures.PROMO,
                 text=texts().POST_PROMO,
             )
         except Exception as e:
